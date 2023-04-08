@@ -1,0 +1,12 @@
+.section {
+    height: min-content;
+    cursor: pointer;
+}
+.section img{
+    width: 25px;
+}
+.section p{
+    color: #919191;
+    margin: 0;
+    font-size: 12px;
+}

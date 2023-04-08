@@ -1,0 +1,21 @@
+.Recent-container{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ffff;
+    padding: 40px 0px 90px 0px;
+}
+.Recent-container h3{
+    text-align: left;
+    font-size: 24px;
+    margin: 15px 0;
+    color:#ffffff;
+    margin-left: 25px;
+}
+.recent-item{
+    display: flex;
+    
+}

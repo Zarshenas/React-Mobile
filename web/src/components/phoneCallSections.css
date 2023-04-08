@@ -1,0 +1,10 @@
+.sections{
+    position: absolute;
+    bottom: 24px;
+    width: 100%;
+    height: min-content;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    z-index: 999;
+}

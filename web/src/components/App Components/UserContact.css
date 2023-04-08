@@ -1,0 +1,9 @@
+.contact-container{
+    text-align: left;
+    padding:10px 0 10px 0;
+    border-bottom: 1px solid #383838;
+    cursor: pointer;
+}
+#contact-name{
+    font-size: 14px;
+}

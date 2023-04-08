@@ -1,0 +1,50 @@
+.owner-profile{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 0;
+}
+.profile-container{
+    width: 45px;
+    border: 2px solid #37C85B;
+    border-radius: 50%;
+    height: 45px;
+    position:relative;
+}
+.profile-container img{
+    width:35px;
+    height:35px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+}
+.profile-detail-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 14px;
+    margin-left: 10px;
+}
+#player-name{
+    font-size: 22px;
+    font-weight: bolder;
+}
+.profile-detail-container p {
+    margin: 0;
+    display: inline-block;
+    text-align: left;
+}
+.profile-detail{
+    display: flex;
+    justify-content: flex-start;
+}
+#dot{
+    margin: 0 5px;
+}
+.profile-detail p{
+    font-size: 12px;
+}

@@ -1,0 +1,76 @@
+*{
+    box-sizing: border-box;
+}
+.phone-numbering-container{
+    background-color: #000000;
+    width: 100%;
+    height: 100%;
+    padding: 10px 15px;
+}
+
+.showNumbers{
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 60px;
+    margin: 55px 0 10px;
+    font-size: 30px;
+    color: #ffffff;
+    text-align: center;
+}
+.showNumbers:focus{
+    outline: none;
+}
+.numbers-container{
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px 9px;
+}
+.numbers-container button{
+    border: none;
+    background-color: #8f8f8f;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #ffff;
+    justify-self: center;
+    cursor: pointer;
+    font-size: 24px;
+}
+#call-Btn{
+    background-image: url(../../Images/phone-call.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    grid-column: 2;
+    background-color: #ffff;
+}
+#addtocontact{
+    position: absolute;
+    right: 10px;
+    top: 45px;
+    background-color: transparent;
+    border: none;
+    color: #ffff;
+    font-size: 32px;
+    cursor: pointer;
+}
+#eraser{
+    width: 34px;
+    grid-column: 3;
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+}
+.section {
+    height: min-content;
+    cursor: pointer;
+}
+.section img{
+    width: 25px;
+}
+.section p{
+    color: #919191;
+    margin: 0;
+    font-size: 12px;
+}

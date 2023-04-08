@@ -1,0 +1,20 @@
+.mainApps-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.background{
+    background-color: #a5a5a588;
+    border-radius: 20px;
+    width: calc(100% - 20px) ;
+    height: 60px;
+    position: absolute;
+    bottom: 13px;
+    left: 10px;
+}
+.appIcon{
+    width: 40px;
+    border-radius: 12px;
+    cursor: pointer;
+}

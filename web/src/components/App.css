@@ -1,0 +1,55 @@
+.nui-wrapper {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+pre {
+  counter-reset:line-numbering;
+  background:#2c3e50;
+  padding:12px 0px 14px 0;
+  color:#ecf0f1;
+  line-height:140%;
+}
+
+.phone-borders {
+  position: absolute;
+  right:20px;
+  bottom: 20px;
+  background-image: url(../Images/Backgrounds/1.png);
+  background-size: cover;
+  border-radius: 45px;
+  width: 270px;
+  height: 565px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; */
+  border: 4px solid;
+  outline-width:2px;
+  outline-style: solid;
+  outline-offset: 0px;
+  outline-color: #c9c9c9;
+  overflow: hidden;
+}
+#frontcamera{
+  position: absolute;
+  right:0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  margin: auto;
+  margin-top: 14px;
+  width: 80px;
+  z-index: 999;
+}
+#phoneBody{
+  position: absolute;
+  width: 282px;
+  height: 570px;
+  right:14px;
+  bottom: 18px;
+}

@@ -1,0 +1,14 @@
+#homeBtn{
+    position: absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    right:0;
+    margin: auto auto 3px auto;
+    background-color: #979797;
+    width: 39%;
+    height: 6px;
+    border-radius: 15px;
+    cursor: pointer;
+    z-index: 999;
+}

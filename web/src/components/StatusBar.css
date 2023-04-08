@@ -1,0 +1,27 @@
+.statusbar-container{
+    width: 100%;
+    padding: 0 10px 0 15px;
+    /* height:; */
+    color: #ffff;
+    display: grid;
+    grid-template-columns:repeat(9, 1fr);
+    align-items: center;
+    position: absolute;
+    z-index: 9999;
+}
+.statusbar-container img{
+    width: 30px;
+}
+#signalIcon{
+    grid-column: 8;
+    justify-self: right;
+}
+#batteryIcon{
+    grid-column: 9;
+    justify-self: right;
+}
+#airPlane{
+    width: 15px;
+    grid-column: 7;
+    justify-self: right;
+}
