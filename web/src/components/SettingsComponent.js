@@ -41,7 +41,7 @@ const SettingsComponent = ({settings,setSettings}) => {
                     <FontAwesomeIcon icon="fa-chevron-right" />
                 </div>
                 <div>
-                    <p>Farame Color</p>
+                    <p>Frame Color</p>
                     <input value={settings.frameColor} onChange={frameColorHandler} type="color" />
                 </div>
                 <div onClick={openRingtoneHandler}>

@@ -9,6 +9,9 @@ import PhoneCallSections from './phoneCallSections';
 import ContactsComponent from './App Components/ContactsComponent';
 import RecentCalls from './App Components/RecentCalls';
 
+import { useNuiEvent } from '../hooks/useNuiEvent';
+import { fetchNui } from '../utils/fetchNui';
+
 
 import wallpaper1 from "../Images/Backgrounds/1.png";
 import wallpaper2 from "../Images/Backgrounds/2.png";
@@ -100,22 +103,26 @@ const App = () => {
       ringtone:"3",
       airplaneMode:false,
     })
-    window.addEventListener("message" ,  (event) => {
-      let data = event.data;
-      if(data.action == 'gay') {
-        console.log(`Hello ${data}!`);
-      }
-    });
+    
+    fetchNui("test", phoneSettingData);
+    
   } , [])
   useEffect(()=>{
     backGroundRef.current.style.backgroundImage = `url(${chooseImage(phoneSettingData.phoneWallpaper)})`;
   } , [phoneSettingData])
+  
+  const Nigga = () => {
+    useNuiEvent("test" , (data)=>{
+        console.log(data)
+    })
+  }
+
 
   return (
     <div className="nui-wrapper">
         <img draggable="false" id='phoneBody' src={phoneBody} alt="phoneBody" />
       <div ref={backGroundRef} className='phone-borders' style={{borderColor : phoneSettingData.frameColor}}>
-        <img draggable="false" id='frontcamera' src={frontCamera} alt="frontcamera" />
+        <img onClick={Nigga} draggable="false" id='frontcamera' src={frontCamera} alt="frontcamera" />
         <StatusBar airplaneMode={phoneSettingData.airplaneMode}/>
         <appSettingContext.Provider value={{phoneSettingData , setPhoneSettingData}}>
           <appContext.Provider value={{isAppOpen ,setisAppOpen}}>
