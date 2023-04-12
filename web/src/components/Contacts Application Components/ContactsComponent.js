@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PhoneInfo from "../Not Used Components/PhoneInfo";
 import UserContact from "../Call Application Components/UserContact";
 import ContactDetail from "./ContactDetail";
+import { fetchNui } from "../../utils/fetchNui";
 
 export const ContactDetailContext = createContext();
 
@@ -15,45 +16,48 @@ const ContactsComponent = () => {
 
   const [contacts, setContacts] = useState([]);
   useEffect(() => {
-    //comes from ServerSide
-    setContacts([
-      {
-        mmd: "0917251159",
-      },
-      {
-        Ali: "0917251145",
-      },
-      {
-        Reza: "0917251856",
-      },
-      {
-        Gholam: "0917251635",
-      },
-      {
-        Nigger: "0917251785",
-      },
-      {
-        Gay: "0917251258",
-      },
-      {
-        Samad: "0917251654",
-      },
-      {
-        Faght: "0917251222",
-      },
-      {
-        Mighad: "0917251333",
-      },
-      {
-        Nimmmma: "0917251445",
-      },
-      {
-        Sirrrr: "0917251977",
-      },
-      {
-        niki: "0917251850",
-      },
-    ]);
+    // comes from ServerSide
+    // setContacts([
+    //   {
+    //     mmd: "0917251159",
+    //   },
+    //   {
+    //     Ali: "0917251145",
+    //   },
+    //   {
+    //     Reza: "0917251856",
+    //   },
+    //   {
+    //     Gholam: "0917251635",
+    //   },
+    //   {
+    //     Nigger: "0917251785",
+    //   },
+    //   {
+    //     Gay: "0917251258",
+    //   },
+    //   {
+    //     Samad: "0917251654",
+    //   },
+    //   {
+    //     Faght: "0917251222",
+    //   },
+    //   {
+    //     Mighad: "0917251333",
+    //   },
+    //   {
+    //     Nimmmma: "0917251445",
+    //   },
+    //   {
+    //     Sirrrr: "0917251977",
+    //   },
+    //   {
+    //     niki: "0917251850",
+    //   },
+    // ]);
+    fetchNui("GetContacts", {}).then(data=>{
+      setContacts(data)
+    });
   }, []);
   const [searchString, setSearchString] = useState("");
   const [searchedContact, setsearchedContact] = useState([]);
@@ -65,9 +69,11 @@ const ContactsComponent = () => {
     setSearchString(e.target.value);
     if (e.target.value) {
       setsearchedContact(
-        contacts.filter((item) =>
-          item.name.toLowerCase().includes(e.target.value.toLowerCase())
-        )
+        contacts.filter((item) =>{
+          if (Object.keys(item)[0].toLowerCase().includes(e.target.value.toLowerCase())) {
+            return item
+          }
+        })
       );
     } else {
       setsearchedContact([]);

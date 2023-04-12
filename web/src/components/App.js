@@ -1,4 +1,4 @@
-import React,{useState , createContext, useEffect ,createRef} from 'react';
+import React,{useState , createContext, useEffect ,createRef , useContext} from 'react';
 import './App.css'
 
 import MainApps from './MainApps';
@@ -10,8 +10,7 @@ import ContactsComponent from './Contacts Application Components/ContactsCompone
 import RecentCalls from './Call Application Components/Recent Calls Components/RecentCalls';
 import SettingsComponent from './Settings Components/SettingsComponent';
 
-import { useNuiEvent } from '../hooks/useNuiEvent';
-import { fetchNui } from '../utils/fetchNui';
+import {VisibilityCtx} from '../providers/VisibilityProvider.tsx'
 
 
 import wallpaper1 from "../Images/Backgrounds/1.png";
@@ -35,10 +34,10 @@ import phoneBody from '../Images/phone.png';
 import frontCamera from '../Images/frontcamera.png';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {faPlane,faChevronRight, faChevronLeft,faPhone , faComment , faMagnifyingGlass , faCoffee } from '@fortawesome/free-solid-svg-icons'
+import {faUser,faPlane,faChevronRight, faChevronLeft,faPhone , faComment , faMagnifyingGlass , faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 
-library.add(faPlane,faChevronRight,faChevronLeft , faPhone , faMagnifyingGlass , faCoffee , faComment);
+library.add(faUser,faPlane,faChevronRight,faChevronLeft , faPhone , faMagnifyingGlass , faCoffee , faComment);
 
 
 
@@ -48,6 +47,8 @@ export const appSettingContext = createContext();
 const backGroundRef = createRef();
 
 const App = () => {
+  const {visible,setVisible} = useContext(VisibilityCtx);
+
   function chooseImage(id) {
     switch (id) {
       case "1":
@@ -94,7 +95,16 @@ const App = () => {
   });
 
   const [phoneSettingData , setPhoneSettingData] = useState({});
-  
+  useEffect(() => {
+    setisAppOpen({
+      keypad:false,
+      messager:false,
+      contacts:false,
+      settings:false,
+      recents:false,
+    })
+  },[visible])
+
   useEffect(()=>{
     //comes from server 
     setPhoneSettingData({
@@ -103,26 +113,18 @@ const App = () => {
       ringtone:"3",
       airplaneMode:false,
     })
-    
-    fetchNui("test", phoneSettingData);
-    
   } , [])
   useEffect(()=>{
     backGroundRef.current.style.backgroundImage = `url(${chooseImage(phoneSettingData.phoneWallpaper)})`;
   } , [phoneSettingData])
   
-  const Nigga = () => {
-    useNuiEvent("test" , (data)=>{
-        console.log(data)
-    })
-  }
 
 
   return (
     <div className="nui-wrapper">
         <img draggable="false" id='phoneBody' src={phoneBody} alt="phoneBody" />
       <div ref={backGroundRef} className='phone-borders' style={{borderColor : phoneSettingData.frameColor}}>
-        <img onClick={Nigga} draggable="false" id='frontcamera' src={frontCamera} alt="frontcamera" />
+        <img draggable="false" id='frontcamera' src={frontCamera} alt="frontcamera" />
         <StatusBar airplaneMode={phoneSettingData.airplaneMode}/>
         <appSettingContext.Provider value={{phoneSettingData , setPhoneSettingData}}>
           <appContext.Provider value={{isAppOpen ,setisAppOpen}}>
