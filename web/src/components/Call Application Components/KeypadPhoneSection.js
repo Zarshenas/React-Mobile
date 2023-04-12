@@ -1,8 +1,8 @@
 import React , {useContext} from 'react';
 
-import keypadIcon from '../Images/keypad.png';
+import keypadIcon from '../../Images/keypad.png';
 
-import {appContext} from './App';
+import {appContext} from '../App';
 
 const KeypadPhoneSection = () => {
     const {isAppOpen ,setisAppOpen }=useContext(appContext);

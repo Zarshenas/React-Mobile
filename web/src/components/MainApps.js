@@ -1,5 +1,5 @@
 import React ,{ useState ,useContext } from 'react';
-import './MainApp.css';
+import './MainApps.css';
 
 import phoneCall from '../Images/call.png';
 import contacts from '../Images/contacts.png';

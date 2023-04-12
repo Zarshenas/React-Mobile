@@ -1,9 +1,9 @@
 import React from 'react';
 
 import './RecentCallDetail.css'
-import missedCallImg from '../Images/missedcall.png';
-import incomingCallImg from '../Images/incomingcall.png';
-import outgoingCallImg from '../Images/outgoingcall.png';
+import missedCallImg from '../../../Images/missedcall.png';
+import incomingCallImg from '../../../Images/incomingcall.png';
+import outgoingCallImg from '../../../Images/outgoingcall.png';
 
 const RecentCallDetail = ({recentCall}) => {
     return (

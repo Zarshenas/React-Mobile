@@ -2,22 +2,22 @@ import React , {useContext} from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { appSettingContext } from './App';
+import { appSettingContext } from '../App';
 
-import wallpaper1 from "../Images/Backgrounds/1.png";
-import wallpaper2 from "../Images/Backgrounds/2.png";
-import wallpaper3 from "../Images/Backgrounds/3.png";
-import wallpaper4 from "../Images/Backgrounds/4.png";
-import wallpaper5 from "../Images/Backgrounds/5.png";
-import wallpaper6 from "../Images/Backgrounds/6.png";
-import wallpaper7 from "../Images/Backgrounds/7.png";
-import wallpaper8 from "../Images/Backgrounds/8.png";
-import wallpaper9 from "../Images/Backgrounds/9.png";
-import wallpaper10 from "../Images/Backgrounds/10.png";
-import wallpaper11 from "../Images/Backgrounds/11.png";
-import wallpaper12 from "../Images/Backgrounds/12.png";
-import wallpaper13 from "../Images/Backgrounds/13.png";
-import wallpaper14 from "../Images/Backgrounds/14.png";
+import wallpaper1 from "../../Images/Backgrounds/1.png";
+import wallpaper2 from "../../Images/Backgrounds/2.png";
+import wallpaper3 from "../../Images/Backgrounds/3.png";
+import wallpaper4 from "../../Images/Backgrounds/4.png";
+import wallpaper5 from "../../Images/Backgrounds/5.png";
+import wallpaper6 from "../../Images/Backgrounds/6.png";
+import wallpaper7 from "../../Images/Backgrounds/7.png";
+import wallpaper8 from "../../Images/Backgrounds/8.png";
+import wallpaper9 from "../../Images/Backgrounds/9.png";
+import wallpaper10 from "../../Images/Backgrounds/10.png";
+import wallpaper11 from "../../Images/Backgrounds/11.png";
+import wallpaper12 from "../../Images/Backgrounds/12.png";
+import wallpaper13 from "../../Images/Backgrounds/13.png";
+import wallpaper14 from "../../Images/Backgrounds/14.png";
 
 import "./WallpaperSelectMenue.css";
 

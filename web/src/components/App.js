@@ -2,12 +2,13 @@ import React,{useState , createContext, useEffect ,createRef} from 'react';
 import './App.css'
 
 import MainApps from './MainApps';
-import Keypad from './App Components/Keypad';
+import Keypad from './Call Application Components/Keypad';
 import StatusBar from './StatusBar';
 import HomeButton from './HomeButton';
-import PhoneCallSections from './phoneCallSections';
-import ContactsComponent from './App Components/ContactsComponent';
-import RecentCalls from './App Components/RecentCalls';
+import PhoneCallSections from './Call Application Components/phoneCallSections';
+import ContactsComponent from './Contacts Application Components/ContactsComponent';
+import RecentCalls from './Call Application Components/Recent Calls Components/RecentCalls';
+import SettingsComponent from './Settings Components/SettingsComponent';
 
 import { useNuiEvent } from '../hooks/useNuiEvent';
 import { fetchNui } from '../utils/fetchNui';
@@ -35,7 +36,6 @@ import frontCamera from '../Images/frontcamera.png';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {faPlane,faChevronRight, faChevronLeft,faPhone , faComment , faMagnifyingGlass , faCoffee } from '@fortawesome/free-solid-svg-icons'
-import SettingsComponent from './SettingsComponent';
 
 
 library.add(faPlane,faChevronRight,faChevronLeft , faPhone , faMagnifyingGlass , faCoffee , faComment);

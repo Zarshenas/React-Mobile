@@ -2,7 +2,7 @@ import React, { useEffect, createRef, useContext } from "react";
 
 import "./EditContact.css";
 
-import { ContactDetailContext } from "./App Components/ContactsComponent";
+import { ContactDetailContext } from "./ContactsComponent";
 
 const nameInputRef = createRef();
 const numberInputRef = createRef();

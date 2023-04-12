@@ -2,7 +2,7 @@ import React , {useEffect , useState}  from 'react';
 
 import './RecentCalls.css';
 
-import RecentCallDetail from '../RecentCallDetail';
+import RecentCallDetail from '../Recent Calls Components/RecentCallDetail';
 
 const RecentCalls = () => {
     const [recentCalls , setRecentCalls] = useState([])

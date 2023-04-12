@@ -1,10 +1,10 @@
 import React , {useContext} from 'react';
 
-import clockIcon from '../Images/clockIcon.png';
+import clockIcon from '../../../Images/clockIcon.png';
 
 import './RecentsAppButton.css'
 
-import {appContext} from './App';
+import {appContext} from '../../App';
 
 const RecentsAppButton = () => {
     const {isAppOpen ,setisAppOpen} = useContext(appContext);

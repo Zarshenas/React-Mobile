@@ -1,4 +1,4 @@
-import React , {useState , useEffect ,useContext} from 'react';
+import React , { useEffect ,useContext} from 'react';
 
 import AudioPlayer ,{ RHAP_UI } from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
@@ -7,11 +7,11 @@ import './Ringtones.css'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-import {appSettingContext} from './App'
+import {appSettingContext} from '../App'
 
-import ringtone1 from '../RingTones/1.mp3';
-import ringtone2 from '../RingTones/2.mp3';
-import ringtone3 from '../RingTones/3.mp3';
+import ringtone1 from '../../RingTones/1.mp3';
+import ringtone2 from '../../RingTones/2.mp3';
+import ringtone3 from '../../RingTones/3.mp3';
 
 const Ringtones = ({isComponentOpen , setIsComponentOpen}) => {
 

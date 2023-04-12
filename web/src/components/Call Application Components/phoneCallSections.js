@@ -1,9 +1,9 @@
 import React from 'react';
 
 // import Keypad from './Keypad';
-import ContactsAppButton from './ContactsAppButton';
+import ContactsAppButton from '../Contacts Application Components/ContactsAppButton';
 import KeypadPhoneSection from './KeypadPhoneSection';
-import RecentsAppButton from './RecentsAppButton';
+import RecentsAppButton from './Recent Calls Components/RecentsAppButton';
 
 import './phoneCallSections.css';
 

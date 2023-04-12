@@ -2,9 +2,9 @@ import React , {useContext} from 'react';
 
 import './ContactsAppButton.css';
 
-import contactsIcon from '../Images/User Contacts Icon.png';
+import contactsIcon from '../../Images/User Contacts Icon.png';
 
-import {appContext} from './App';
+import {appContext} from '../App';
 
 const ContactsAppButton = () => {
     const {isAppOpen ,setisAppOpen} = useContext(appContext);
