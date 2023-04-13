@@ -4,14 +4,15 @@ import "./ContactsComponent.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import PhoneInfo from "../Not Used Components/PhoneInfo";
+import PhoneInfo from "../UserInfoComponents/PhoneInfo";
 import UserContact from "../Call Application Components/UserContact";
 import ContactDetail from "./ContactDetail";
+import AddToContacts from "./AddToContacts";
 import { fetchNui } from "../../utils/fetchNui";
 
 export const ContactDetailContext = createContext();
 
-const ContactsComponent = () => {
+const ContactsComponent = ({isAddContactOpen , setIsAddContactOpen}) => {
   const searchInput = useRef(null);
 
   const [contacts, setContacts] = useState([]);
@@ -80,11 +81,18 @@ const ContactsComponent = () => {
     }
   };
 
+  const openAddContact =() => {
+    if (!isAddContactOpen) {
+      setIsAddContactOpen(true)
+    }
+  }
+
   return (
     <div id="contacts-container">
       <div className="first-section">
         <p>Contacts</p>
-        <button>+</button>
+        <button onClick={openAddContact}>+</button>
+        {isAddContactOpen && <AddToContacts setIsAddContactOpen={setIsAddContactOpen}/>}
       </div>
       <div className="second-section">
         <div className="search-container">

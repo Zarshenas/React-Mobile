@@ -52,7 +52,6 @@ export const VisibilityProvider: React.FC = ({children}) => {
       }}
     >
     <StyledDiv isVisible={visible}>
-    {/* <div style={{ visibility: true ? 'visible' : 'hidden', height: '100%'}}> */}
       {children}
     </StyledDiv>
   </VisibilityCtx.Provider>)

@@ -5,8 +5,10 @@ import './Keypad.css';
 
 import eraserIcon from '../../Images/eraser.png';
 
+import AddToContacts from '../Contacts Application Components/AddToContacts'
 
-const PhoneCallUI = () => {
+
+const PhoneCallUI = ({isAddContactOpen , setIsAddContactOpen}) => {
     const [playerFullNumber, setplayerFullNumber] = useState();
 
     const input = useRef(null);
@@ -23,7 +25,7 @@ const PhoneCallUI = () => {
     }
 
     const submitNumber = () =>{
-        if (input.current.value.toString().length===10) {
+        if (input.current.value.toString().length===11) {
             console.log(playerFullNumber);
         }else{
             console.log("tedad argham shomare telephone dorost nist ")
@@ -41,26 +43,26 @@ const PhoneCallUI = () => {
         
     }
 
-    const addToContactHandler = () =>{
-        if (input.current.value.toString().length===10) {
-            
-        }else{
-            return false
-        }
-    }
     useEffect(() => {
         input.current.focus();
-      }, []);
-
+    }, []);
+    
     const eraserHandler = () =>{
         if (input.current.value) {
             input.current.value = input.current.value.slice(0 , input.current.value.toString().length - 1);
         }
         input.current.focus();
     }
+
+    const addToContactHandler = () =>{
+        if (!isAddContactOpen) {
+            setIsAddContactOpen(true)
+        }
+    }
     return (
         <div className='phone-numbering-container'>
             <button onClick={addToContactHandler}  id='addtocontact'>+</button>
+            {isAddContactOpen&&<AddToContacts setIsAddContactOpen={setIsAddContactOpen}/>}
             <input ref={input} className='showNumbers' maxLength={10} type="text" onKeyPress={showHandler} />
             <div className='numbers-container'>
                 <button onClick={displayNumber}>1</button>

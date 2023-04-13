@@ -3,6 +3,7 @@ import React, { useEffect, createRef, useContext } from "react";
 import "./EditContact.css";
 
 import { ContactDetailContext } from "./ContactsComponent";
+import { fetchNui } from "../../utils/fetchNui";
 
 const nameInputRef = createRef();
 const numberInputRef = createRef();
@@ -21,12 +22,24 @@ const EditContact = ({ contactName, contactNumber, id, setIsEditOpen ,close }) =
     ]);
     setIsEditOpen(false);
     close(false);
-
+    fetchNui("GetEditedContacts", contacts).then(data=>{
+      if (data === "successful") {
+        setIsEditOpen(false);
+      }
+    })
   };
   useEffect(() => {
     nameInputRef.current.value = contactName;
     numberInputRef.current.value = contactNumber;
   }, [contactName, contactNumber]);
+
+  const allowNumberHandler = (e) => {
+    let alowedCharacters = ["1","2","3","4","5","6","7","8","9","0"]
+    if (!alowedCharacters.includes(e.key)) {
+        e.preventDefault();
+        return false;
+    }
+}
   return (
     <div className="edit-contact-container">
       <div className="page-options">
@@ -37,7 +50,7 @@ const EditContact = ({ contactName, contactNumber, id, setIsEditOpen ,close }) =
         <input ref={nameInputRef} placeholder="Name" type="text" />
       </div>
       <div className="field-container">
-        <input ref={numberInputRef} placeholder="Number" type="text" />
+        <input onKeyPress={allowNumberHandler} ref={numberInputRef} placeholder="Number" type="text" />
       </div>
     </div>
   );

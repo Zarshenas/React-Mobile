@@ -14,6 +14,12 @@ RegisterNUICallback('hideFrame', function(_, cb)
   cb({})
 end)
 
+local player_name = "Gholam Heshmati"
+
+RegisterNUICallback("GetPlayerName", function(data, cb)
+  cb(player_name)
+end)
+
 RegisterNUICallback('getClientData', function(data, cb)
   debugPrint('Data sent by React', json.encode(data))
 
@@ -24,4 +30,3 @@ RegisterNUICallback('getClientData', function(data, cb)
   cb(retData)
 end)
 
-SendReactMessage("gay" , false);

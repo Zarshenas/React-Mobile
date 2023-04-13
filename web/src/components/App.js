@@ -48,6 +48,8 @@ const backGroundRef = createRef();
 
 const App = () => {
   const {visible,setVisible} = useContext(VisibilityCtx);
+  
+  const [isAddContactOpen , setIsAddContactOpen] = useState(false);
 
   function chooseImage(id) {
     switch (id) {
@@ -119,7 +121,6 @@ const App = () => {
   } , [phoneSettingData])
   
 
-
   return (
     <div className="nui-wrapper">
         <img draggable="false" id='phoneBody' src={phoneBody} alt="phoneBody" />
@@ -129,12 +130,12 @@ const App = () => {
         <appSettingContext.Provider value={{phoneSettingData , setPhoneSettingData}}>
           <appContext.Provider value={{isAppOpen ,setisAppOpen}}>
             {Object.values(isAppOpen).every((app) => app === false) && <MainApps/>}
-            {isAppOpen.keypad&&<Keypad/>}
+            {isAppOpen.keypad&&<Keypad isAddContactOpen={isAddContactOpen} setIsAddContactOpen={setIsAddContactOpen}/>}
             {isAppOpen.recents&&<RecentCalls/>}
-            {isAppOpen.contacts&&<ContactsComponent/>}
+            {isAppOpen.contacts&&<ContactsComponent isAddContactOpen={isAddContactOpen} setIsAddContactOpen={setIsAddContactOpen}/>}
             {isAppOpen.settings&&<SettingsComponent setSettings={setPhoneSettingData} settings={phoneSettingData}/>}
             { (isAppOpen.keypad || isAppOpen.recents ||isAppOpen.contacts ) && <PhoneCallSections />}
-            <HomeButton/>
+            <HomeButton setIsAddContactOpen={setIsAddContactOpen}/>
           </appContext.Provider>
         </appSettingContext.Provider>
         
