@@ -30,3 +30,40 @@ RegisterNUICallback('getClientData', function(data, cb)
   cb(retData)
 end)
 
+local recentCalls_data ={
+  {
+      id=1,
+      name="mmd",
+      phoneNumber="0917251159",
+      time="1:32",
+      callType="missed"
+  },
+  {
+      id=2,
+      name="gholam",
+      phoneNumber="0917251140",
+      time="2:02",
+      callType="outgoing"
+  },
+  {
+      id=3,
+      name="Noob Sagdididriii",
+      phoneNumber="0917251140",
+      time="00:03",
+      callType="incoming"
+  }
+}
+RegisterNUICallback('GetRecentCalls', function(data, cb)
+  cb(recentCalls_data)
+end)
+
+local userPhoneSettings ={
+  phoneWallpaper="5",
+  frameColor="#000000",
+  ringtone="3",
+  airplaneMode=true,
+}
+
+RegisterNUICallback('GetPhoneSettings', function(data, cb)
+  cb(userPhoneSettings)
+end)

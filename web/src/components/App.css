@@ -1,3 +1,6 @@
+*{
+  user-select: none;
+}
 .nui-wrapper {
   text-align: center;
   height: 100%;

@@ -35,6 +35,7 @@ import frontCamera from '../Images/frontcamera.png';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {faUser,faPlane,faChevronRight, faChevronLeft,faPhone , faComment , faMagnifyingGlass , faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { fetchNui } from '../utils/fetchNui';
 
 
 library.add(faUser,faPlane,faChevronRight,faChevronLeft , faPhone , faMagnifyingGlass , faCoffee , faComment);
@@ -109,11 +110,8 @@ const App = () => {
 
   useEffect(()=>{
     //comes from server 
-    setPhoneSettingData({
-      phoneWallpaper:"6",
-      frameColor:"#000000",
-      ringtone:"3",
-      airplaneMode:false,
+    fetchNui("GetPhoneSettings" , {}).then(data => {
+      setPhoneSettingData(data)
     })
   } , [])
   useEffect(()=>{
