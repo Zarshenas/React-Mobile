@@ -1,4 +1,4 @@
-import React ,{ useState ,useContext } from 'react';
+import React ,{useContext } from 'react';
 import './MainApps.css';
 
 import phoneCall from '../Images/call.png';
@@ -11,10 +11,7 @@ import {appContext} from './App';
 const MainApps = () => {
     const {isAppOpen,setisAppOpen} = useContext(appContext);
     
-    const [app, setApp] = useState();
     const openAppHandler = (e)=>{
-        const appName = e.target.alt;
-        setApp(appName)
         switch (e.target.alt) {
             case "keypad":
                 setisAppOpen({...isAppOpen,keypad:true});

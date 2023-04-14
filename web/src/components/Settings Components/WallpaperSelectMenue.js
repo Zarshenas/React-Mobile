@@ -20,6 +20,7 @@ import wallpaper13 from "../../Images/Backgrounds/13.png";
 import wallpaper14 from "../../Images/Backgrounds/14.png";
 
 import "./WallpaperSelectMenue.css";
+import { fetchNui } from "../../utils/fetchNui";
 
 
 const WallpaperSelectMenue = ({isComponentOpen,setIsComponentOpen}) => {
@@ -31,6 +32,7 @@ const WallpaperSelectMenue = ({isComponentOpen,setIsComponentOpen}) => {
 
     const clickHandler = (e) =>{
       setPhoneSettingData({...phoneSettingData , phoneWallpaper : e.target.attributes.alt.nodeValue})
+      fetchNui("UpdatedSetting" , phoneSettingData)
     }
 
   return (

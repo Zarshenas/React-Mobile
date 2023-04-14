@@ -60,21 +60,15 @@ const ContactsComponent = ({isAddContactOpen , setIsAddContactOpen}) => {
       setContacts(data)
     });
   }, []);
-  const [searchString, setSearchString] = useState("");
   const [searchedContact, setsearchedContact] = useState([]);
   const [isContactDetailOpen, setIsContactDetailOpen] = useState(false);
   const [contactDetail, setContactDetail] = useState({});
   const [selectedContact, setselectedContact] = useState({});
 
   const searchHandler = (e) => {
-    setSearchString(e.target.value);
     if (e.target.value) {
       setsearchedContact(
-        contacts.filter((item) =>{
-          if (Object.keys(item)[0].toLowerCase().includes(e.target.value.toLowerCase())) {
-            return item
-          }
-        })
+        contacts.filter((item) => Object.keys(item)[0].toLowerCase().includes(e.target.value.toLowerCase()) && item)
       );
     } else {
       setsearchedContact([]);
@@ -133,6 +127,7 @@ const ContactsComponent = ({isAddContactOpen , setIsAddContactOpen}) => {
                     contactDetail={item}
                     setselectedContact={setselectedContact}
                     setContactDetail={setContactDetail}
+                    noUse={contactDetail}
                   />
                 );
               })

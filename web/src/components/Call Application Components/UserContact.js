@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import "./UserContact.css";
 
@@ -10,8 +10,7 @@ const UserContact = ({
   contactDetail,
   setContactDetail,
 }) => {
-  const { isContactDetailOpen, setIsContactDetailOpen } =
-    useContext(ContactDetailContext);
+  const {  setIsContactDetailOpen } = useContext(ContactDetailContext);
 
   const openContactDetail = () => {
     setIsContactDetailOpen(true);

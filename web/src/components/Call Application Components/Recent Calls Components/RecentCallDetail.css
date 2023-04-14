@@ -8,7 +8,7 @@
 #first-section{
     display: flex;
     justify-content: flex-start;
-    align-items: end;
+    align-items: flex-end;
 }
 #first-section img , #first-section p{
     margin: 0 8px;

@@ -1,0 +1,44 @@
+#contents-con{
+    z-index: 992;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    padding-top: 50px;
+}
+#contactName{
+    margin: 0;
+
+}
+#callType{
+    margin: 0;
+    font-size: 14px;
+    color: #c0c0c0;
+}
+#actionBtns{
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 70px;
+    width: 100%;
+}
+#actionBtns div{
+    height: max-content;
+}
+#actionBtns div img{
+    width: 50px;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#actionBtns div:first-child img{
+    background-color: #FF3D2F;
+}
+#actionBtns div:last-child img{
+    background-color: #3CC459;
+}
+#actionBtns div p{
+    margin: 0;
+}

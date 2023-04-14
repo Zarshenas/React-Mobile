@@ -30,12 +30,12 @@ import wallpaper14 from "../Images/Backgrounds/14.png";
 
 
 
+import { fetchNui } from '../utils/fetchNui';
 import phoneBody from '../Images/phone.png';
 import frontCamera from '../Images/frontcamera.png';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {faUser,faPlane,faChevronRight, faChevronLeft,faPhone , faComment , faMagnifyingGlass , faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { fetchNui } from '../utils/fetchNui';
 
 
 library.add(faUser,faPlane,faChevronRight,faChevronLeft , faPhone , faMagnifyingGlass , faCoffee , faComment);
@@ -44,13 +44,16 @@ library.add(faUser,faPlane,faChevronRight,faChevronLeft , faPhone , faMagnifying
 
 export const appContext = createContext();
 export const appSettingContext = createContext();
+export const callingContext = createContext();
 
 const backGroundRef = createRef();
 
 const App = () => {
-  const {visible,setVisible} = useContext(VisibilityCtx);
+  const {visible} = useContext(VisibilityCtx);
   
   const [isAddContactOpen , setIsAddContactOpen] = useState(false);
+  const [isOutGoingCallOpen , setIsOutGoingCallOpen] = useState(false);
+  const [isIncomingCallOpen , setIsIncomingCallOpen] = useState(false);
 
   function chooseImage(id) {
     switch (id) {
@@ -121,10 +124,14 @@ const App = () => {
 
   return (
     <div className="nui-wrapper">
-        <img draggable="false" id='phoneBody' src={phoneBody} alt="phoneBody" />
+      <img draggable="false" id='phoneBody' src={phoneBody} alt="phoneBody" />
       <div ref={backGroundRef} className='phone-borders' style={{borderColor : phoneSettingData.frameColor}}>
-        <img draggable="false" id='frontcamera' src={frontCamera} alt="frontcamera" />
-        <StatusBar airplaneMode={phoneSettingData.airplaneMode}/>
+      <img draggable="false" id='frontcamera' src={frontCamera} alt="frontcamera" />
+      <StatusBar airplaneMode={phoneSettingData.airplaneMode}/>
+
+
+
+      <callingContext.Provider value={{isOutGoingCallOpen , setIsOutGoingCallOpen ,isIncomingCallOpen , setIsIncomingCallOpen}}>
         <appSettingContext.Provider value={{phoneSettingData , setPhoneSettingData}}>
           <appContext.Provider value={{isAppOpen ,setisAppOpen}}>
             {Object.values(isAppOpen).every((app) => app === false) && <MainApps/>}
@@ -136,6 +143,7 @@ const App = () => {
             <HomeButton setIsAddContactOpen={setIsAddContactOpen}/>
           </appContext.Provider>
         </appSettingContext.Provider>
+      </callingContext.Provider>
         
       </div>
     </div>

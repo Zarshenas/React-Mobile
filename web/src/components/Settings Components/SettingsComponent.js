@@ -6,6 +6,7 @@ import './SettingsComponent.css'
 import WallpaperSelectMenue from './WallpaperSelectMenue';
 import Ringtones from './Ringtones';
 import PhoneInfo from '../UserInfoComponents/PhoneInfo';
+import { fetchNui } from '../../utils/fetchNui';
 
 
 const SettingsComponent = ({settings,setSettings}) => {
@@ -25,10 +26,12 @@ const SettingsComponent = ({settings,setSettings}) => {
 
     const frameColorHandler =(e) =>{
         setSettings({...settings,frameColor:e.target.value})
+        fetchNui("UpdatedSetting" , settings)
     }
 
     const checkboxHandler = (e) => {
         setSettings({...settings , airplaneMode : e.target.checked})
+        fetchNui("UpdatedSetting" , settings)
     }
     
 

@@ -40,7 +40,7 @@ local recentCalls_data ={
   },
   {
       id=2,
-      name="gholam",
+      name="gholammm",
       phoneNumber="0917251140",
       time="2:02",
       callType="outgoing"
@@ -58,7 +58,7 @@ RegisterNUICallback('GetRecentCalls', function(data, cb)
 end)
 
 local userPhoneSettings ={
-  phoneWallpaper="5",
+  phoneWallpaper="10",
   frameColor="#000000",
   ringtone="3",
   airplaneMode=true,
@@ -66,4 +66,8 @@ local userPhoneSettings ={
 
 RegisterNUICallback('GetPhoneSettings', function(data, cb)
   cb(userPhoneSettings)
+end)
+
+RegisterNUICallback('UpdatedSetting', function(data, cb)
+  userPhoneSettings = data
 end)

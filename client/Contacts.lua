@@ -40,3 +40,9 @@ RegisterNUICallback("GetEditedContacts", function(data, cb)
   local my_contacts = data;
   cb("successful")
 end)
+
+RegisterNUICallback("CallRequest" , function(data , cb)
+    print("Calling : "..data)
+    cb("successful")
+
+end)

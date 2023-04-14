@@ -5,14 +5,16 @@ import './HomeButton.css';
 import {appContext} from './App'
 
 import {VisibilityCtx} from '../providers/VisibilityProvider.tsx'
+import { fetchNui } from '../utils/fetchNui';
 
 const HomeButton = ({setIsAddContactOpen}) => {
-    const {visible,setVisible} = useContext(VisibilityCtx);
+    const {setVisible} = useContext(VisibilityCtx);
     const {isAppOpen ,setisAppOpen }=useContext(appContext);
 
     const homeButtonHandler = ()=>{
         if (!Object.values(isAppOpen).some(val => val === true)) {
             setVisible(false)
+            fetchNui('hideFrame')
         }
         setIsAddContactOpen(false);
         let closedAllApps = {};

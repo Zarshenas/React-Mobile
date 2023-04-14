@@ -1,4 +1,4 @@
-import React , { useState , useRef , useEffect } from 'react';
+import React , { useState , useRef , useEffect ,useContext} from 'react';
 
 
 import './Keypad.css';
@@ -6,15 +6,21 @@ import './Keypad.css';
 import eraserIcon from '../../Images/eraser.png';
 
 import AddToContacts from '../Contacts Application Components/AddToContacts'
+import { fetchNui } from '../../utils/fetchNui';
+
+import {callingContext} from '../App'
+import OutGoingCall from './InComing And Outgoing Call Components/OutGoingCall';
+import IncomingCall from './InComing And Outgoing Call Components/IncomingCall';
 
 
 const PhoneCallUI = ({isAddContactOpen , setIsAddContactOpen}) => {
     const [playerFullNumber, setplayerFullNumber] = useState();
+    const {isOutGoingCallOpen , setIsOutGoingCallOpen} = useContext(callingContext)
 
     const input = useRef(null);
 
     const displayNumber = (e) =>{
-        if (input.current.value.toString().length===10) {
+        if (input.current.value.toString().length >= 11) {
             return;
         }
 
@@ -25,11 +31,14 @@ const PhoneCallUI = ({isAddContactOpen , setIsAddContactOpen}) => {
     }
 
     const submitNumber = () =>{
-        if (input.current.value.toString().length===11) {
-            console.log(playerFullNumber);
-        }else{
-            console.log("tedad argham shomare telephone dorost nist ")
+        if (input.current.value.toString().length!==11) {
+            return false;
         }
+        fetchNui("CallRequest" , playerFullNumber).then(data=>{
+            if (data ==="successful") {
+                setIsOutGoingCallOpen(true)
+            }
+        })
     }
 
     const showHandler = (e)=>{
@@ -40,7 +49,6 @@ const PhoneCallUI = ({isAddContactOpen , setIsAddContactOpen}) => {
         }else{
             setplayerFullNumber(input.current.value);
         }
-        
     }
 
     useEffect(() => {
@@ -63,7 +71,7 @@ const PhoneCallUI = ({isAddContactOpen , setIsAddContactOpen}) => {
         <div className='phone-numbering-container'>
             <button onClick={addToContactHandler}  id='addtocontact'>+</button>
             {isAddContactOpen&&<AddToContacts setIsAddContactOpen={setIsAddContactOpen}/>}
-            <input ref={input} className='showNumbers' maxLength={10} type="text" onKeyPress={showHandler} />
+            <input ref={input} className='showNumbers' maxLength={11} type="text" onKeyPress={showHandler} />
             <div className='numbers-container'>
                 <button onClick={displayNumber}>1</button>
                 <button onClick={displayNumber}>2</button>
@@ -80,6 +88,7 @@ const PhoneCallUI = ({isAddContactOpen , setIsAddContactOpen}) => {
                 <button id='call-Btn' onClick={submitNumber}></button>
                 <img onClick={eraserHandler} src={eraserIcon} id='eraser' alt='eraser' />
             </div>
+            {isOutGoingCallOpen&& <OutGoingCall/>}
         </div>
     );
 }

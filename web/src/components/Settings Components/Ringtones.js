@@ -12,6 +12,7 @@ import {appSettingContext} from '../App'
 import ringtone1 from '../../RingTones/1.mp3';
 import ringtone2 from '../../RingTones/2.mp3';
 import ringtone3 from '../../RingTones/3.mp3';
+import { fetchNui } from '../../utils/fetchNui';
 
 const Ringtones = ({isComponentOpen , setIsComponentOpen}) => {
 
@@ -40,7 +41,7 @@ const Ringtones = ({isComponentOpen , setIsComponentOpen}) => {
                 customControlsSection={
                     [
                         <label className="checkbox-con">
-                        <input className='ringtone1' checked={phoneSettingData.ringtone === "1"} onChange={() => setPhoneSettingData({...phoneSettingData ,ringtone:"1" })}  type="checkbox"/>
+                        <input className='ringtone1' checked={phoneSettingData.ringtone === "1"} onChange={() => {setPhoneSettingData({...phoneSettingData ,ringtone:"1" }); fetchNui("UpdatedSetting" , phoneSettingData)}}  type="checkbox"/>
                         <div className="checkmark"></div>
                     </label>,
                       RHAP_UI.ADDITIONAL_CONTROLS,
@@ -59,7 +60,7 @@ const Ringtones = ({isComponentOpen , setIsComponentOpen}) => {
                 customControlsSection={
                     [
                         <label className="checkbox-con">
-                        <input className='ringtone2' checked={phoneSettingData.ringtone === "2"} onChange={() => setPhoneSettingData({...phoneSettingData ,ringtone:"2" })}  type="checkbox"/>
+                        <input className='ringtone2' checked={phoneSettingData.ringtone === "2"} onChange={() => {setPhoneSettingData({...phoneSettingData ,ringtone:"2" });fetchNui("UpdatedSetting" , phoneSettingData)}}  type="checkbox"/>
                         <div className="checkmark"></div>
                     </label>,
                       RHAP_UI.ADDITIONAL_CONTROLS,
@@ -78,7 +79,7 @@ const Ringtones = ({isComponentOpen , setIsComponentOpen}) => {
                 customControlsSection={
                     [
                         <label className="checkbox-con">
-                            <input className='ringtone3' checked={phoneSettingData.ringtone === "3"} onChange={() => setPhoneSettingData({...phoneSettingData ,ringtone:"3" })}  type="checkbox"/>
+                            <input className='ringtone3' checked={phoneSettingData.ringtone === "3"} onChange={() => {setPhoneSettingData({...phoneSettingData ,ringtone:"3" });fetchNui("UpdatedSetting" , phoneSettingData)}}  type="checkbox"/>
                             <div className="checkmark"></div>
                         </label>,
                       
