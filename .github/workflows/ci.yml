@@ -28,5 +28,5 @@ jobs:
       - name: Install deps
         run: yarn --frozen-lockfile
       - name: Try build
-        run: yarn build
+        run: npm run build
 
