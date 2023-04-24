@@ -57,7 +57,6 @@ const App = () => {
     if(visible) return;
     const showHandler = (e)=> {
       if (["F!"].includes(e.code)) {
-        console.log("ff");
         fetchNui('showTheUi');
         setVisible(true);
       }

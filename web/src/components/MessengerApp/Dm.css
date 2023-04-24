@@ -28,16 +28,19 @@
     overflow: auto;
     overflow-x:hidden;
 }
+.chatSmoothScroll{
+    scroll-behavior: smooth;
+}
 .messages-container::-webkit-scrollbar{
-    background-color: #000000;
+    background-color: transparent;
     width: 1px;
 
 }
 .messages-container::-webkit-scrollbar-track{
-    background-color: #000000;
+    background-color: transparent;
 }
 .messages-container::-webkit-scrollbar-thumb{
-    background-color: #000000;
+    background-color: transparent;
 }
 
 .message-container{

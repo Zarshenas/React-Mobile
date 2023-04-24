@@ -2,8 +2,6 @@ import React,{useEffect, useState } from 'react';
 
 import {textCuter} from '../../Functions/TextCuter'
 
-import { fetchNui } from '../../utils/fetchNui';
-
 import profileImge from '../../Images/profile.png'
 
 
