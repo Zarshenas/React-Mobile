@@ -1,4 +1,4 @@
-import React , {useContext} from 'react';
+import React , {useContext, useEffect} from 'react';
 
 import styled from 'styled-components';
 import './IncomingCall.css'
@@ -18,10 +18,19 @@ import wallpaper12 from "../../../Images/Backgrounds/12.png";
 import wallpaper13 from "../../../Images/Backgrounds/13.png";
 import wallpaper14 from "../../../Images/Backgrounds/14.png";
 
+//Ringtones
+import RingTone1 from "../../../RingTones/1.mp3"
+import RingTone2 from "../../../RingTones/2.mp3"
+import RingTone3 from "../../../RingTones/3.mp3"
+
 import AcceptCall from '../../../Images/AcceptCall.png'
 import Deline from '../../../Images/Deline.png'
 
 import {appSettingContext} from '../../App';
+import {inCallContext} from '../../App';
+import {outCallContext} from '../../App';
+
+import useSound from "use-sound";
 
 function returnBackground(arg){
     switch (arg) {
@@ -87,7 +96,37 @@ const ContainerDiv = styled.div`
 `; 
 
 const IncomingCall = () => {
-    const {phoneSettingData} = useContext(appSettingContext)
+    const {phoneSettingData} = useContext(appSettingContext);
+    const {setIsIncomingCallOpen} = useContext(inCallContext)
+    const {isOutGoingCallOpen,setIsOutGoingCallOpen } = useContext(outCallContext)
+    console.log(isOutGoingCallOpen)
+    function chooseRingTone(id) {
+        switch (id) {
+          case "1":
+            return RingTone1;
+          case "2":
+            return RingTone2;
+          case "3":
+            return RingTone3;     
+          default:
+            break;
+        }
+    }
+
+    const [play , { stop }] = useSound(chooseRingTone(phoneSettingData.ringtone),{volume:0.5})
+    
+    useEffect(()=>{
+        play();
+    } , [play])
+    const acceptCallHandler = () =>{
+        stop();
+        setIsIncomingCallOpen(false)
+        setIsOutGoingCallOpen(true);
+    }
+    const declineCallHandler = () =>{
+        stop();
+        setIsIncomingCallOpen(false)
+    }
     return (
         <div>
             <ContainerDiv backgroundImage={phoneSettingData.phoneWallpaper}></ContainerDiv>
@@ -95,11 +134,11 @@ const IncomingCall = () => {
                 <h1 id='contactName'>name</h1>   
                 <p id='callType'>mobile</p>
                 <div id='actionBtns'>
-                    <div>
+                    <div onClick={declineCallHandler}>
                         <img src={Deline} alt="icon" />
                         <p>Decline</p>
                     </div>
-                    <div>
+                    <div onClick={acceptCallHandler}>
                         <img src={AcceptCall} alt="icon" />
                         <p>Accept</p>
                     </div>

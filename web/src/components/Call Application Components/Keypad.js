@@ -8,14 +8,13 @@ import eraserIcon from '../../Images/eraser.png';
 import AddToContacts from '../Contacts Application Components/AddToContacts'
 import { fetchNui } from '../../utils/fetchNui';
 
-import {callingContext} from '../App'
+import {outCallContext} from '../App'
 import OutGoingCall from './InComing And Outgoing Call Components/OutGoingCall';
-import IncomingCall from './InComing And Outgoing Call Components/IncomingCall';
 
 
 const PhoneCallUI = ({isAddContactOpen , setIsAddContactOpen}) => {
     const [playerFullNumber, setplayerFullNumber] = useState();
-    const {isOutGoingCallOpen , setIsOutGoingCallOpen} = useContext(callingContext)
+    const {isOutGoingCallOpen , setIsOutGoingCallOpen} = useContext(outCallContext)
 
     const input = useRef(null);
 
@@ -88,7 +87,7 @@ const PhoneCallUI = ({isAddContactOpen , setIsAddContactOpen}) => {
                 <button id='call-Btn' onClick={submitNumber}></button>
                 <img onClick={eraserHandler} src={eraserIcon} id='eraser' alt='eraser' />
             </div>
-            {isOutGoingCallOpen&& <OutGoingCall/>}
+            {isOutGoingCallOpen && <OutGoingCall/>}
         </div>
     );
 }

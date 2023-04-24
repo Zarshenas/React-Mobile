@@ -5,7 +5,7 @@ import './OutGoingCall.css'
 import styled from 'styled-components';
 
 import {appSettingContext} from '../../App';
-import {callingContext} from '../../App'
+import {outCallContext} from '../../App'
 
 
 import wallpaper1 from "../../../Images/Backgrounds/1.png";
@@ -91,7 +91,7 @@ const ContainerDiv = styled.div`
 
 const OutGoingCall = () => {
 
-    const {setIsOutGoingCallOpen} = useContext(callingContext)
+    const {setIsOutGoingCallOpen} = useContext(outCallContext)
 
     const {phoneSettingData}=useContext(appSettingContext);
     const [timer , setTimer] = useState();

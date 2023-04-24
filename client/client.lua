@@ -5,12 +5,15 @@ end
 
 RegisterCommand('show-nui', function()
   toggleNuiFrame(true)
-  debugPrint('Show NUI frame')
+end)
+
+RegisterNUICallback('showTheUi', function(_, cb)
+  toggleNuiFrame(true)
+  cb({})
 end)
 
 RegisterNUICallback('hideFrame', function(_, cb)
   toggleNuiFrame(false)
-  debugPrint('Hide NUI frame')
   cb({})
 end)
 
@@ -18,16 +21,6 @@ local player_name = "Gholam Heshmati"
 
 RegisterNUICallback("GetPlayerName", function(data, cb)
   cb(player_name)
-end)
-
-RegisterNUICallback('getClientData', function(data, cb)
-  debugPrint('Data sent by React', json.encode(data))
-
--- Lets send back client coords to the React frame for use
-  local curCoords = GetEntityCoords(PlayerPedId())
-
-  local retData <const> = { x = curCoords.x, y = curCoords.y, z = curCoords.z }
-  cb(retData)
 end)
 
 local recentCalls_data ={
@@ -60,7 +53,7 @@ end)
 local userPhoneSettings ={
   phoneWallpaper="10",
   frameColor="#000000",
-  ringtone="3",
+  ringtone="1",
   airplaneMode=true,
 }
 
@@ -70,4 +63,47 @@ end)
 
 RegisterNUICallback('UpdatedSetting', function(data, cb)
   userPhoneSettings = data
+end)
+
+
+local userChats = {
+  ['09172511403'] = {
+    {text="Salam",time="15:16",isSelfMessage= true},
+    {text="lorem ipsume naw adawdaw wdwddkfd dfs bain nigga game jsssi kdf",time="15:20",isSelfMessage= true},
+    {text="khoobi",time="17:17",isSelfMessage= true},
+    {text="khoobam",time="18:16",isSelfMessage= true},
+    {text="niga",time="19:16",isSelfMessage= false},
+    {text="fsdf",time="20:17",isSelfMessage= true},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
+  },
+  ['09172511402'] = {
+    {text="09172511402",time="15:16",isSelfMessage= true},
+    {text="lorem ipsume naw adawdaw wdwddkfd dfs bain nigga game jsssi kdf",time="15:20",isSelfMessage= true},
+    {text="khoobi",time="17:17",isSelfMessage= false},
+    {text="khoobam",time="18:16",isSelfMessage= true},
+    {text="niga",time="19:16",isSelfMessage= false},
+    {text="fsdf",time="20:17",isSelfMessage= true},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false}
+  },
+  ['09172511401'] = {
+    {text="01",time="15:16" , isSelfMessage= true},
+    {text="lorem ipsume naw adawdaw wdwddkfd dfs bain nigga game jsssi kdf",time="15:20" ,isSelfMessage= false},
+    {text="khoobi",time="17:17", isSelfMessage= true},
+    {text="khoobam",time="18:16", isSelfMessage= false},
+    {text="niga",time="19:16", isSelfMessage= true},
+    {text="fsdf",time="20:17", isSelfMessage= false},
+    {text="fefewfwfwfwef",time="11:16", isSelfMessage= true}
+  }
+}
+
+RegisterNUICallback("GetSelectedDmChats" , function(data , cb)
+  cb(userChats)
 end)

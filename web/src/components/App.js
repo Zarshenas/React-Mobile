@@ -35,21 +35,41 @@ import phoneBody from '../Images/phone.png';
 import frontCamera from '../Images/frontcamera.png';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {faUser,faPlane,faChevronRight, faChevronLeft,faPhone , faComment , faMagnifyingGlass , faCoffee } from '@fortawesome/free-solid-svg-icons'
+import {faPaperPlane,faUser,faPlane,faChevronRight, faChevronLeft,faPhone , faComment , faMagnifyingGlass , faCoffee } from '@fortawesome/free-solid-svg-icons'
+import OutGoingCall from './Call Application Components/InComing And Outgoing Call Components/OutGoingCall';
+import MainPage from './MessengerApp/MainPage';
 
 
-library.add(faUser,faPlane,faChevronRight,faChevronLeft , faPhone , faMagnifyingGlass , faCoffee , faComment);
+library.add(faPaperPlane,faUser,faPlane,faChevronRight,faChevronLeft , faPhone , faMagnifyingGlass , faCoffee , faComment);
 
 
 
 export const appContext = createContext();
 export const appSettingContext = createContext();
-export const callingContext = createContext();
+export const inCallContext = createContext();
+export const outCallContext = createContext();
 
 const backGroundRef = createRef();
 
 const App = () => {
-  const {visible} = useContext(VisibilityCtx);
+  const {visible,setVisible} = useContext(VisibilityCtx);
+  useEffect(() => {
+    if(visible) return;
+    const showHandler = (e)=> {
+      if (["F!"].includes(e.code)) {
+        console.log("ff");
+        fetchNui('showTheUi');
+        setVisible(true);
+      }
+      
+    }
+    window.addEventListener("keydown", showHandler)
+    // cleanup this component
+    return () => {
+      window.removeEventListener('keydown', showHandler);
+    };
+  },[visible , setVisible])
+
   
   const [isAddContactOpen , setIsAddContactOpen] = useState(false);
   const [isOutGoingCallOpen , setIsOutGoingCallOpen] = useState(false);
@@ -130,8 +150,8 @@ const App = () => {
       <StatusBar airplaneMode={phoneSettingData.airplaneMode}/>
 
 
-
-      <callingContext.Provider value={{isOutGoingCallOpen , setIsOutGoingCallOpen ,isIncomingCallOpen , setIsIncomingCallOpen}}>
+      <outCallContext.Provider value={{isOutGoingCallOpen , setIsOutGoingCallOpen}}>
+      <inCallContext.Provider value={{isIncomingCallOpen , setIsIncomingCallOpen}}>
         <appSettingContext.Provider value={{phoneSettingData , setPhoneSettingData}}>
           <appContext.Provider value={{isAppOpen ,setisAppOpen}}>
             {Object.values(isAppOpen).every((app) => app === false) && <MainApps/>}
@@ -139,12 +159,16 @@ const App = () => {
             {isAppOpen.recents&&<RecentCalls/>}
             {isAppOpen.contacts&&<ContactsComponent isAddContactOpen={isAddContactOpen} setIsAddContactOpen={setIsAddContactOpen}/>}
             {isAppOpen.settings&&<SettingsComponent setSettings={setPhoneSettingData} settings={phoneSettingData}/>}
+                      {/* messenger */}
+            {isAppOpen.messager && <MainPage/>}
+                      {/* messenger */}
             { (isAppOpen.keypad || isAppOpen.recents ||isAppOpen.contacts ) && <PhoneCallSections />}
-            <HomeButton setIsAddContactOpen={setIsAddContactOpen}/>
+            {!isIncomingCallOpen && <HomeButton setIsAddContactOpen={setIsAddContactOpen}/>}
+            {isOutGoingCallOpen && <OutGoingCall/>}
           </appContext.Provider>
         </appSettingContext.Provider>
-      </callingContext.Provider>
-        
+      </inCallContext.Provider>
+      </outCallContext.Provider>
       </div>
     </div>
   );

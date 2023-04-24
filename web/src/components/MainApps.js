@@ -17,6 +17,7 @@ const MainApps = () => {
                 setisAppOpen({...isAppOpen,keypad:true});
                 break;
             case "messager":
+                setisAppOpen({...isAppOpen,messager:true});
                 break;
             case "contacts":
                 setisAppOpen({...isAppOpen,contacts:true});

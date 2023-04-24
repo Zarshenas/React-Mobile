@@ -8,7 +8,6 @@ interface Div {
 }
 const StyledDiv = styled.div<Div>`
   height: 100%;
-  /* visibility:${props=>props.isVisible ? 'visible' : 'hidden'}; */
   transition: all 1s ease;
   transform: ${props=>props.isVisible ? "translateY(0px)" : 'translateY(100%)'};
 `;
@@ -41,7 +40,9 @@ export const VisibilityProvider: React.FC = ({children}) => {
 
     window.addEventListener("keydown", keyHandler)
 
-    return () => window.removeEventListener("keydown", keyHandler)
+    return () => {
+      window.removeEventListener("keydown", keyHandler)
+    }
   }, [visible])
 
   return (
@@ -51,9 +52,10 @@ export const VisibilityProvider: React.FC = ({children}) => {
         setVisible
       }}
     >
-    <StyledDiv isVisible={visible}>
-      {children}
-    </StyledDiv>
+      {/* {visible} */}
+      <StyledDiv isVisible={true}>
+        {children}
+      </StyledDiv>
   </VisibilityCtx.Provider>)
 }
 
