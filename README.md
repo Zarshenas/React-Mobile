@@ -1,30 +1,42 @@
 <div align="center">
-    <img href="https://projecterror.dev" width="150" src="https://i.tasoagc.dev/c1pD" alt="Material-UI logo" />
+  <a id="readme-top"></a>
+    <img href="https://github.com/Siza36" width="200" src="./web/src/Images/Pro siyah.jpg" alt="Material-UI logo" />
 </div>
-<h1 align="center">FiveM React and Lua Boilerplate</h1>
+<h1 align="center">FiveM Phone</h1>
+<h2 align="center"><a href="https://github.com/project-error/fivem-react-boilerplate-lua">FiveM React and Lua Boilerplate</a></h2>
+
 
 <div align="center">
-A simple and extendable React (TypeScript) boilerplate designed around the Lua ScRT
+  <a href="https://github.com/Siza36/React-Mobile/issues">Report Bug</a>
+    ·
+  <a href="#contributing">Request Feature</a>
+</div>
+
+
+<div align="center">
+  A phone for GTA-V RolePlay coded by React
 </div>
 
 <div align="center">
 
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/project-error/pe-utils/master/LICENSE)
-![Discord](https://img.shields.io/discord/791854454760013827?label=Our%20Discord)
-![David](https://img.shields.io/david/project-error/fivem-react-boilerplate-lua)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=project-error/fivem-react-boilerplate-lua)](https://dependabot.com)
-</div>
 
-This repository is a basic boilerplate for getting started
-with React in NUI. It contains several helpful utilities and
-is bootstrapped using `create-react-app`. It is for both browser
+This is a basic Phone using <a href="https://github.com/project-error/fivem-react-boilerplate-lua">React and Lua Boilerplate</a> for getting started
+with React in NUI. It is for both browser
 and in-game based development workflows.
 
 For in-game workflows, Utilizing `craco` to override CRA, we can have hot
-builds that just require a resource restart instead of a full
+builds that require a resource restart instead of a full
 production build
 
-This version of the boilerplate is meant for the CfxLua runtime.
+the version of the <a href="https://github.com/project-error/fivem-react-boilerplate-lua">boilerplate</a> I used is meant for the CfxLua runtime.
+
+
+### Built With
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+
 
 ## Requirements
 * [Node > v10.6](https://nodejs.org/en/)
@@ -33,184 +45,60 @@ This version of the boilerplate is meant for the CfxLua runtime.
 *A basic understanding of the modern web development workflow. If you don't 
 know this yet, React might not be for you just yet.*
 
-## Getting Started
+<!-- Project Set Up -->
+## Project Set Up
+1. Fork the repository to make it yours.
+2. Rename the forked repository to `username.github.io`, where `username` is your GitHub username.
+3. That's it! Navigate to `username.github.io` to see your website :) 
 
-First clone the repository or use the template option and place
-it within your `resources` folder
-
-### Installation
-
-*The boilerplate was made using `yarn` but is still compatible with
-`npm`.*
-
-Install dependencies by navigating to the `web` folder within
-a terminal of your choice and type `npm i` or `yarn`.
-
-## Features
-
-This boilerplate comes with some utilities and examples to work off of.
-
-### Lua Utils
-
-**SendReactMessage**
-
-This is a small wrapper for dispatching NUI messages. This is designed
-to be used with the `useNuiEvent` React hook.
-
-Signature
-```lua
----@param action string The action you wish to target
----@param data any The data you wish to send along with this action
-SendReactMessage(action, data)
-```
-
-Usage
-```lua
-SendReactMessage('setVisible', true)
-```
-
-**debugPrint**
-
-A debug printing utility that is dependent on a convar,
-if the convar is set this will print out to the console.
-
-The convar is dependent on the name given to the resource.
-It follows this format `YOUR_RESOURCE_NAME-debugMode`
-
-To turn on debugMode add `setr YOUR_RESOURCE_NAME-debugMode 1` to 
-your server.cfg or use the `setr` console command instead.
-
-Signature (Replicates `print`)
-```lua
----@param ... any[] The arguments you wish to send
-debugPrint(...)
-```
-
-Usage
-```lua
-debugPrint('wow cool string to print', true, someOtherVar)
-```
-
-### React Utils
-
-Signatures are not included for these utilities as the type definitions
-are sufficient enough.
-
-**useNuiEvent**
-
-This is a custom React hook that is designed to intercept and handle
-messages dispatched by the game scripts. This is the primary
-way of creating passive listeners.
+If this is your first time making a website and is having trouble getting started, that's ok. Head over to the [FAQ](#faq) section and let me try help you.
 
 
-*Note: For now handlers can only be registered a single time. I haven't
-come across a personal usecase for a cascading event system*
 
-**Usage**
-```jsx
-const MyComp: React.FC = () => {
-  const [state, setState] = useState('')
-  
-  useNuiEvent<string>('myAction', (data) => {
-    // the first argument to the handler function
-    // is the data argument sent using SendReactMessage
-    
-    // do whatever logic u want here
-    setState(data)
-  })
-  
-  return(
-    <div>
-      <h1>Some component</h1>
-      <p>{state}</p>
-    </div>
-  )
-}
+<!-- CONTRIBUTING -->
 
-```
+## FAQ
+* [How do I fork this repository?](#how-do-i-fork-this-repository)
+* [How do I rename the forked repository?](#how-do-i-rename-the-forked-repository)
+* [How do I run the project locally?](#how-do-i-run-the-project-locally)
 
-**fetchNui**
+### How do I fork this repository?
+1. Make sure you're logged into GitHub with your account
+2. Click the Fork button on the upper right-hand side of this page
 
-This is a simple NUI focused wrapper around the standard `fetch` API.
-This is the main way to accomplish active NUI data fetching 
-or to trigger NUI callbacks in the game scripts.
+### How do I rename the forked repository?
+1. Navigate to the main page of the repository. It should be `https://github.com/username/React-Mobile/`, where `username` is your GitHub username
+2. Click Settings
+3. Under the Repository name heading, type `new repo name` then click Rename
 
-When using this, you must always at least callback using `{}`
-in the gamescripts.
+### How do I run the project locally?
+1. Open your terminal and then type `$git clone [repository-URL]`.
+2. cd into the new folder and type `$npm install --force` This installs the required dependencies.
+3. To run the React project `$npm start`.
 
-*This can be heavily customized to your use case*
+## Contributing
 
-**Usage**
-```ts
-// First argument is the callback event name. 
-fetchNui<ReturnData>('getClientData').then(retData => {
-  console.log('Got return data from client scripts:')
-  console.dir(retData)
-  setClientData(retData)
-}).catch(e => {
-  console.error('Setting mock data due to error', e)
-  setClientData({ x: 500, y: 300, z: 200})
-})
-```
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue.
+Don't forget to give the project a star! Thanks again!
 
-**debugData**
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-This is a function allowing for mocking dispatched game script
-actions in a browser environment. It will trigger `useNuiEvent` handlers
-as if they were dispatched by the game scripts. **It will only fire if the current
-environment is a regular browser and not CEF**
 
-**Usage**
-```ts
-// This will target the useNuiEvent hooks registered with `setVisible`
-// and pass them the data of `true`
-debugData([
-  {
-    action: 'setVisible',
-    data: true,
-  }
-])
-```
+## Bugs and Issues
+Have a bug or an issue with this project? [Open a new issue][issues-url]
 
-**Misc Utils**
+[issues-url]: https://github.com/Siza36/React-Mobile/issues
 
-These are small but useful included utilities.
+<!-- CONTACT -->
+## Contact
 
-* `isEnvBrowser()` - Will return a boolean indicating if the current 
-  environment is a regular browser. (Useful for logic in development)
+Siavash - [@instagram](https://instagram.com/thiisiza) - ali.zarshenas.2018@gmail.com
 
-## Development Workflow
+Siza - [discord](https://discordapp.com/users/Siza#6397) - Siza#6397
 
-This boilerplate was designed with development workflow in mind.
-It includes some helpful scripts to accomplish that.
-
-**Hot Builds In-Game**
-
-When developing in-game, you can use the hot build system by
-running the `start:game` script. This is essentially the start
-script but it writes to disk. Meaning all that is required is a
-resource restart to update the game script
-
-**Usage**
-```sh
-# yarn
-yarn start:game
-# npm
-npm run start:game
-```
-
-**Production Builds**
-
-When you are done with development phase for your resource. You
-must create a production build that is optimized and minimized.
-
-You can do this by running the following:
-
-```sh
-npm run build
-yarn build 
-```
-
-## Additional Notes
-
-Need further support? Join our [Discord](https://discord.com/invite/HYwBjTbAY5)!
+Project Link: [https://github.com/Siza36/React-Mobile/](https://github.com/Siza36/React-Mobile/)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
