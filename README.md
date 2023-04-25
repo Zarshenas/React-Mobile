@@ -19,7 +19,7 @@
   A phone for GTA-V RolePlay coded by React
 </div>
 
-<div align="center">
+<div align="left">
 
 
 This is a basic Phone using <a href="https://github.com/project-error/fivem-react-boilerplate-lua">React and Lua Boilerplate</a> for getting started
@@ -36,7 +36,9 @@ the version of the <a href="https://github.com/project-error/fivem-react-boilerp
 ### Built With
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+
 ![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
+
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
 
