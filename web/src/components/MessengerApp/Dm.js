@@ -52,9 +52,15 @@ const Dm = ({athorize ,setIsDmOpen}) => {
     const messageHandler = (e) => {
         setUserMessege(e.target.value)
     }
+
+    const sendWithEnterKey = (e) => {
+        if (["Enter"].includes(e.code)) {
+            sendHandler();
+        }
+    }
     
     
-    const sendHandler = async () => {
+    const sendHandler = () => {
         setSmoothScroll(true)
         if (!inputRef.current.value) return;
         const time = today.toLocaleTimeString(locale, { hour: 'numeric', hour12: false, minute: 'numeric' });
@@ -90,7 +96,7 @@ const Dm = ({athorize ,setIsDmOpen}) => {
                 <div ref={myRef}></div>
             </div>
             <div className='send-con'>
-                <input ref={inputRef} onChange={messageHandler} type="text" />
+                <input onKeyPress={sendWithEnterKey} ref={inputRef} onChange={messageHandler} type="text" />
                 <span onClick={sendHandler} ><FontAwesomeIcon icon="fa-paper-plane" /></span>
             </div>
         </div>

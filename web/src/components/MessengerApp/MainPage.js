@@ -7,6 +7,7 @@ import profileImge from '../../Images/profile.png'
 
 import './MainPage.css'
 import Dm from './Dm';
+import { fetchNui } from '../../utils/fetchNui';
 
 
 const MainPage = () => {
@@ -14,51 +15,29 @@ const MainPage = () => {
     const [isDmOpen , setIsDmOpen] = useState(false);
     const [selectedDm , setSelectedDm] = useState([]);
     
-    const data = [
-        {
-            "Reza":"09172511401",
-            "lastMessage":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, praesentium!",
-            "unread":"2",
-            "priority" :"1",
-        },
-        {
-            "Siavash":"09172511402",
-            "lastMessage":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, praesentium!",
-            "unread":"0",
-            "priority" :"3",
-        },
-        {
-            "Ali":"09172511403",
-            "lastMessage":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, praesentium!",
-            "unread":"4",
-            "priority" :"2",
-        }
-    ]
     useEffect(()=>{
-        // fetchNui("GetContacts", {}).then(data=>{
-        //     setContacts(data)
-        //   });
-        data.sort(function(a, b){return a.priority-b.priority})
-        setChatDetails(data)
+        fetchNui("GetLastMessegeInfo", {}).then(data=>{
+            console.log(Object.values(data).sort(function(a, b){return a.priority-b.priority}))
+            setChatDetails(Object.values(data).sort(function(a, b){return a.priority-b.priority}))
+          });
         } , [])
 
-    const openChatHandler = (e) => {
-        setSelectedDm(e.currentTarget.id.split("-"))
-
-        setIsDmOpen(true)
-
-    }
-
+        const openChatHandler = (e) => {
+            setSelectedDm(e.currentTarget.id.split("-"))
+            
+            setIsDmOpen(true)
+            
+        }
     return (
         <div id='messenger-container'>
             <h1>Your Messages</h1>
-            {chatDetails.map(item=><div id={`${Object.values(item)[0]}-${Object.keys(item)[0]}`} onClick={openChatHandler} className='chat-menu-container' key={Object.values(item)[0]} >
+            {chatDetails.map(item=><div id={`${Object.values(item)[2]}-${Object.keys(item)[2]}`} onClick={openChatHandler} className='chat-menu-container' key={Object.values(item)[0]} >
                 <img src={profileImge} alt="userprofile" />
                 <div id='chat-overview'>
-                    <h1>{Object.keys(item)[0]}</h1>
-                    <p>{textCuter(Object.values(item)[1])}</p>
+                    <h1>{Object.keys(item)[2]}</h1>
+                    <p>{textCuter(item.lastMessage)}</p>
                 </div>
-                {Object.values(item)[2] !== "0" && <span id='unread-count'>{Object.values(item)[2]}</span>}
+                {item.unread !== "0" && <span id='unread-count'>{item.unread}</span>}
             </div>)}
             {isDmOpen && <Dm setIsDmOpen={setIsDmOpen} athorize={selectedDm}/>}
         </div>

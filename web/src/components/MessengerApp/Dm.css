@@ -70,3 +70,24 @@
     border-radius: 0 15px 15px 15px;
     align-self: start;
 }
+.send-con{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.send-con input{
+    outline: none;
+    border: none;
+    background-color: #3b3b3b;
+    width: 80%;
+    height: 25px;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 10px;
+    padding-left: 5px;
+}
+.send-con span{
+    color: #2f85e7;
+    cursor: pointer;
+}

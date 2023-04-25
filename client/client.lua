@@ -68,126 +68,45 @@ end)
 
 local userChats = {
   ['09172511403'] = {
-    {text="Salam",time="15:16",isSelfMessage= true},
-    {text="lorem ipsume naw adawdaw wdwddkfd dfs bain nigga game jsssi kdf",time="15:20",isSelfMessage= true},
-    {text="khoobi",time="17:17",isSelfMessage= true},
-    {text="khoobam",time="18:16",isSelfMessage= true},
-    {text="niga",time="19:16",isSelfMessage= false},
-    {text="fsdf",time="20:17",isSelfMessage= true},
-    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
-    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
-    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
-    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
-    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
-    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
-    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
-    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
-    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false},
+    {text="Salam",time="15:16",isSelfMessage= true ,isUnread=false},
+    {text="lorem ipsume naw adawdaw wdwddkfd dfs bain nigga game jsssi kdf",time="15:20",isSelfMessage= true ,isUnread=false},
+    {text="khoobi",time="17:17",isSelfMessage= true ,isUnread=false},
+    {text="khoobam",time="18:16",isSelfMessage= true ,isUnread=false},
+    {text="niga",time="19:16",isSelfMessage= false ,isUnread=false},
+    {text="fsdf",time="20:17",isSelfMessage= true ,isUnread=false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false ,isUnread=false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false ,isUnread=false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false ,isUnread=false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false ,isUnread=false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false ,isUnread=false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false ,isUnread=false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false ,isUnread=false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false ,isUnread=false},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false ,isUnread=true},
   },
   ['09172511402'] = {
-    {text="09172511402",time="15:16",isSelfMessage= true},
-    {text="lorem ipsume naw adawdaw wdwddkfd dfs bain nigga game jsssi kdf",time="15:20",isSelfMessage= true},
-    {text="khoobi",time="17:17",isSelfMessage= false},
-    {text="khoobam",time="18:16",isSelfMessage= true},
-    {text="niga",time="19:16",isSelfMessage= false},
-    {text="fsdf",time="20:17",isSelfMessage= true},
-    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false}
+    {text="09172511402",time="15:16",isSelfMessage= true ,isUnread=false},
+    {text="lorem ipsume naw adawdaw wdwddkfd dfs bain nigga game jsssi kdf",time="15:20",isSelfMessage= true ,isUnread=false},
+    {text="khoobi",time="17:17",isSelfMessage= false ,isUnread=false},
+    {text="khoobam",time="18:16",isSelfMessage= true ,isUnread=false},
+    {text="niga",time="19:16",isSelfMessage= false ,isUnread=true},
+    {text="fsdf",time="20:17",isSelfMessage= true ,isUnread=true},
+    {text="fefewfwfwfwef",time="11:16",isSelfMessage= false ,isUnread=true}
   },
   ['09172511401'] = {
-    {text="01",time="15:16" , isSelfMessage= true},
-    {text="lorem ipsume naw adawdaw wdwddkfd dfs bain nigga game jsssi kdf",time="15:20" ,isSelfMessage= false},
-    {text="khoobi",time="17:17", isSelfMessage= true},
-    {text="khoobam",time="18:16", isSelfMessage= false},
-    {text="niga",time="19:16", isSelfMessage= true},
-    {text="fsdf",time="20:17", isSelfMessage= false},
-    {text="fefewfwfwfwef",time="11:16", isSelfMessage= true}
+    {text="01",time="15:16" , isSelfMessage= true ,isUnread=false},
+    {text="lorem ipsume naw adawdaw wdwddkfd dfs bain nigga game jsssi kdf",time="15:20" ,isSelfMessage= false ,isUnread=false},
+    {text="khoobi",time="17:17", isSelfMessage= true ,isUnread=false},
+    {text="khoobam",time="18:16", isSelfMessage= false ,isUnread=false},
+    {text="niga",time="19:16", isSelfMessage= true ,isUnread=false},
+    {text="fsdf",time="20:17", isSelfMessage= false ,isUnread=true},
+    {text="fefewfwfwfwef",time="11:16", isSelfMessage= true ,isUnread=true}
   }
 }
 
 RegisterNUICallback("GetSelectedDmChats" , function(data , cb)
   cb(userChats)
 end)
-
-
-function print_table(node)
-  local cache, stack, output = {},{},{}
-  local depth = 1
-  local output_str = "{\n"
-
-  while true do
-      local size = 0
-      for k,v in pairs(node) do
-          size = size + 1
-      end
-
-      local cur_index = 1
-      for k,v in pairs(node) do
-          if (cache[node] == nil) or (cur_index >= cache[node]) then
-
-              if (string.find(output_str,"}",output_str:len())) then
-                  output_str = output_str .. ",\n"
-              elseif not (string.find(output_str,"\n",output_str:len())) then
-                  output_str = output_str .. "\n"
-              end
-
-              -- This is necessary for working with HUGE tables otherwise we run out of memory using concat on huge strings
-              table.insert(output,output_str)
-              output_str = ""
-
-              local key
-              if (type(k) == "number" or type(k) == "boolean") then
-                  key = "["..tostring(k).."]"
-              else
-                  key = "['"..tostring(k).."']"
-              end
-
-              if (type(v) == "number" or type(v) == "boolean") then
-                  output_str = output_str .. string.rep('\t',depth) .. key .. " = "..tostring(v)
-              elseif (type(v) == "table") then
-                  output_str = output_str .. string.rep('\t',depth) .. key .. " = {\n"
-                  table.insert(stack,node)
-                  table.insert(stack,v)
-                  cache[node] = cur_index+1
-                  break
-              else
-                  output_str = output_str .. string.rep('\t',depth) .. key .. " = '"..tostring(v).."'"
-              end
-
-              if (cur_index == size) then
-                  output_str = output_str .. "\n" .. string.rep('\t',depth-1) .. "}"
-              else
-                  output_str = output_str .. ","
-              end
-          else
-              -- close the table
-              if (cur_index == size) then
-                  output_str = output_str .. "\n" .. string.rep('\t',depth-1) .. "}"
-              end
-          end
-
-          cur_index = cur_index + 1
-      end
-
-      if (size == 0) then
-          output_str = output_str .. "\n" .. string.rep('\t',depth-1) .. "}"
-      end
-
-      if (#stack > 0) then
-          node = stack[#stack]
-          stack[#stack] = nil
-          depth = cache[node] == nil and depth + 1 or depth - 1
-      else
-          break
-      end
-  end
-
-  -- This is necessary for working with HUGE tables otherwise we run out of memory using concat on huge strings
-  table.insert(output,output_str)
-  output_str = table.concat(output)
-
-  print(output_str)
-end
-
 
 RegisterNUICallback('SendMessage' , function(data , cb)
   local athorizeNumber =data['athorize']
@@ -200,4 +119,39 @@ RegisterNUICallback('SendMessage' , function(data , cb)
   
   cb(userChats)
 
+end)
+
+local lastMessages = {
+      ['09172511401'] = {
+            test1="09172511401",
+            lastMessage="Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, praesentium!",
+            unread="2",
+            priority ="1",
+        },
+      ['09172511402'] = {
+            test2="09172511402",
+            lastMessage="Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, praesentium!",
+            unread="0",
+            priority ="3",
+        },
+      ['09172511403'] = {
+            test3="09172511403",
+            lastMessage="Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, praesentium!",
+            unread="4",
+            priority ="2",
+        }
+      }
+
+-- RegisterNUICallback('GetLastMessegeInfo' , function(data , cb)
+--   for k,v in pairs(userChats) do
+--     for j,c in pairs(v) do
+--       for q,g in pairs(c) do
+--         print(g)
+--       end
+--     end
+--   end
+-- end)
+
+RegisterNUICallback('GetLastMessegeInfo' , function(data , cb)
+  cb(lastMessages)
 end)
