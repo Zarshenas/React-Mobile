@@ -52,8 +52,7 @@ export const VisibilityProvider: React.FC = ({children}) => {
         setVisible
       }}
     >
-      {/* {visible} */}
-      <StyledDiv isVisible={true}>
+      <StyledDiv isVisible={visible}>
         {children}
       </StyledDiv>
   </VisibilityCtx.Provider>)
