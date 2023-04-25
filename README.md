@@ -3,7 +3,7 @@
     <img href="https://github.com/Siza36" width="200" src="./web/src/Images/Pro siyah.jpg" alt="Material-UI logo" />
 </div>
 <h1 align="center">FiveM Phone</h1>
-<p align="center"><font size="5">
+<p align="center"><font size="6">
 <a href="https://github.com/project-error/fivem-react-boilerplate-lua">FiveM React and Lua Boilerplate</a>
 </font></p>
 
