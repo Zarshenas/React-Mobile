@@ -41,7 +41,7 @@ const Dm = ({athorize ,setIsDmOpen}) => {
         return () => {
             clearInterval(timer); // Return a funtion to clear the timer so that it will stop being called on unmount
         }
-        
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
     useEffect(()=>{
@@ -84,14 +84,7 @@ const Dm = ({athorize ,setIsDmOpen}) => {
                 <h1>{athorize[1]}</h1>
             </div>
             <div className={`messages-container ${smoothScroll ? "chatSmoothScroll" : ""}`} >
-                {chatsText.map(dm => {
-                    if (dm.text) {
-                        return <div id={dm.isSelfMessage? "selfMessage" : "notSelfMessage"} className='message-container'>
-                                    <p>{dm.text}</p>
-                                    <p>{dm.time}</p>
-                                </div>
-                    }
-                }
+                {chatsText.map(dm => dm.text && <div id={dm.isSelfMessage? "selfMessage" : "notSelfMessage"} className='message-container'><p>{dm.text}</p><p>{dm.time}</p></div>
                 )}
                 <div ref={myRef}></div>
             </div>
