@@ -56,7 +56,7 @@ const App = () => {
   useEffect(() => {
     if(visible) return;
     const showHandler = (e)=> {
-      if (["F!"].includes(e.code)) {
+      if (["F1!"].includes(e.code)) {
         fetchNui('showTheUi');
         setVisible(true);
       }

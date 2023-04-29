@@ -78,7 +78,9 @@ If this is your first time making a website and is having trouble getting starte
 ### How do I run the project locally?
 1. Open your terminal and then type `$git clone [repository-URL]`.
 2. cd into the new folder and type `$npm install --force` This installs the required dependencies.
-3. To run the React project `$npm start`.
+3. Build the project `$npm run build`.
+4. Paste the project folder in your local servver resources folder.
+5. execute these commands in the game console separately: refresh / ensure Mobile / show-nui.
 
 ## Contributing
 
